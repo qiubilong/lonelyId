@@ -80,7 +80,7 @@ public class LonelyId {
 			long id = ((timestamp - EPOCH) << (int) timestampLeftShift) | (workerId << (int) workerIdShift) | (freeId << (int) freeIdShift) |sequence;
 			
 			if(log.isDebugEnabled()){
-				log.debug( "encode-->" +sb.toString()  +" "+ id + " decode-->"+ LonelyId.uncodeLonelyId(id));
+				log.debug( "encode-->" +sb.toString()  +" id-->"+ id + " decode-->"+ LonelyId.uncodeLonelyId(id));
 
 			}
 			
