@@ -20,3 +20,24 @@ time时间戳    节点标识   预留位   自增序列
 使用zookeeper分配进程标识id后,不需要远程调用，可以直接在本地生成id， 没有存在单点故障，时延高的问题。
 
 该方案生成的id满足唯一性、时间相关、粗略有序、可反解、可制造特性。
+
+# 使用示例
+
+
+		String zookeeperList = "127.0.0.1:2181";
+		
+		final LonelyIdFactory lonelyIdFactory = LonelyIdFactory.getInstance();
+		lonelyIdFactory.init("appName",zookeeperList);
+		final LonelyId lonelyId = lonelyIdFactory.getLonelyId();
+
+		while(true) {  
+			try{
+			
+				lonelyId.nextId();
+				
+				Thread.sleep(100);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+        } 
