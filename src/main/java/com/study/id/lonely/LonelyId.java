@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 public class LonelyId {
 	private static final Logger log = Logger.getLogger(LonelyId.class);
 
-	public final static long EPOCH = 1451577600000L;//Thu, 04 Nov 2010 01:42:54 GMT,使用开始日期
+	private final static long EPOCH = 1451577600000L;//Thu, 04 Nov 2010 01:42:54 GMT,使用开始日期
 	                                  
 	private long workerId;//节点编号
 	private final static long workerIdBits = 9L;//节点编号占用位数
@@ -93,7 +93,7 @@ public class LonelyId {
 		this.workerId = workerId;
 	}
 	
-	public static void checkWorkedId(long workerId){
+	protected static void checkWorkedId(long workerId){
 		if (workerId > maxWorkerId || workerId < 0) {// sanity check for workerId
 			throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0",maxWorkerId));
 		}

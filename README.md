@@ -33,7 +33,7 @@ Long型id只占64位，可以更加有效存储和计算，对作为主键索引
 		
 		final LonelyIdFactory lonelyIdFactory = LonelyIdFactory.getInstance();
 		lonelyIdFactory.init("appName",zookeeperList);
-		final LonelyId lonelyId = lonelyIdFactory.getLonelyId();
+		final LonelyId lonelyId = lonelyIdFactory.getLonelyId();//单例
 
 		while(true) {  
 			try{
@@ -45,7 +45,14 @@ Long型id只占64位，可以更加有效存储和计算，对作为主键索引
 				e.printStackTrace();
 			}
 			
-        } 
+        }
+		
+		//解析id信息
+		long id = 95214749788143622L;//输出的id
+		
+		System.out.println(CommonUtil.uncodeLonelyId(id));//id反解，time时间戳-节点标识-预留位-毫秒内自增
+		System.out.println(CommonUtil.formatForMSTime(id));//2016-09-19 17:49:25:354
+		
 ```
 
 ##有问题反馈
