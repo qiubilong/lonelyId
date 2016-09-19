@@ -1,8 +1,0 @@
-Hibernate的CustomVersionOneStrategy.java，解决了之前version 1的两个问题
-
-- 时间戳(6bytes, 48bit)：毫秒级别的，从1970年算起，能撑8925年....
-- 顺序号(2bytes, 16bit, 最大值65535): 没有时间戳过了一秒要归零的事，各搞各的，short溢出到了负数就归0。
-- 机器标识(4bytes 32bit): 拿localHost的IP地址，IPV4呢正好4个byte，但如果是IPV6要16个bytes，就只拿前4个byte。
-- 进程标识(4bytes 32bit)： 用当前时间戳右移8位再取整数应付，不信两条线程会同时启动。
-
-值得留意就是，机器进程和进程标识组成的64bit Long几乎不变，只变动另一个Long就够了。
