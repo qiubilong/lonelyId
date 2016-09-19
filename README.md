@@ -51,7 +51,7 @@ Long型id只占64位，可以更加有效存储和计算，对作为主键索引
 		long id = 95214749788143622L;//输出的id
 		
 		System.out.println(CommonUtil.uncodeLonelyId(id));//id反解，time时间戳-节点标识-预留位-毫秒内自增
-		System.out.println(CommonUtil.formatForMSTime(id));//2016-09-19 17:49:25:354
+		System.out.println(CommonUtil.getMsTimeOfLonelyId(id));//2016-09-19 17:49:25:354
 		
 ```
 

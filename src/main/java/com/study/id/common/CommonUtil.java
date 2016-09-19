@@ -8,7 +8,7 @@ import com.study.id.lonely.LonelyId;
 public class CommonUtil {
 
 	//还原id的生成时间
-	public static String formatForMSTime(long id) {
+	public static String getMsTimeOfLonelyId(long id) {
 		long time  = LonelyId.GetTimeOfLonelyId(id);
 		DateTime dateTime = new DateTime(time);
 		String formatter = "yyyy-MM-dd HH:mm:ss:SSS";
@@ -22,6 +22,6 @@ public class CommonUtil {
 	
 	public static void main(String[] args) {
 		 long id = LonelyId.GetTimeOfLonelyId(90112193793622016L);
-		 System.out.println(formatForMSTime(id));
+		 System.out.println(getMsTimeOfLonelyId(id));
 	}
 }
