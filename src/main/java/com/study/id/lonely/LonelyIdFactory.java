@@ -31,7 +31,10 @@ public class LonelyIdFactory {
     
     public void init(String appName,String zookeeperList) throws Exception{
     	
-    	if(inited.compareAndSet(false, true)){
+    	init(appName, zookeeperList, 0);
+    }
+    
+    public void init(String appName,String zookeeperList,int freeId) throws Exception{
     		if(StringUtils.isBlank(zookeeperList)){
         		throw new IllegalArgumentException("zookeeperList 参数无效");
         	}
@@ -40,7 +43,7 @@ public class LonelyIdFactory {
          	zookeeperClient = new ZookeeperClient(appName);
         	zookeeperClient.init(this.zookeeperList).registLonelyIdNode();
         	int workerId = zookeeperClient.getWorkerId();
-        	int freeId = 0;
+        
         	
         	lonelyId = new LonelyId(workerId, freeId);
         	
@@ -57,9 +60,8 @@ public class LonelyIdFactory {
     				CloseableUtils.closeQuietly(getZookeeperClient().getClient());
     			}
     		});
-    	}
-    	
     }
+    
     
     public LonelyId getLonelyId(){
     	return lonelyId;
